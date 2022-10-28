@@ -1,0 +1,127 @@
+.flex {
+    width: 200px;
+    height: 200px;
+
+    background: url("../img/flex/ware1.jpg");
+    background-size: contain;
+
+    position: relative;
+
+    margin: 20px 0;
+}
+
+.pen {
+    width: 50%;
+    height: 50%;
+    background: url("../img/flex/ware3.png");
+    background-size: contain;
+
+    position: absolute;
+    left: 18%;
+    top: 44%;
+
+    display: none
+}
+
+
+.flex:hover {
+    background: url("../img/flex/ware2.jpg");
+    background-size: contain;
+}
+
+.flex:hover .pen {
+    display: block;
+    animation: zoom 2s infinite;
+}
+
+@keyframes zoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2)
+    }
+}
+
+.flex:hover::before {
+    content: "Магазин \"Поваренок\"";
+    font-size: 12px;
+    font-weight: bold;
+
+    position: absolute;
+    right: 0;
+}
+
+.flex:active::before {
+    display: none;
+}
+
+.flex:active .pen {
+    display: block;
+    animation: none !important;
+}
+
+.flex:active::after {
+    content: "Жарочная посуда";
+
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+
+    display: block;
+    transform: rotate(-90deg);
+    transform-origin: left;
+
+    position: relative;
+    top: 70%;
+    left: 5%;
+}
+
+.cap {
+    width: 37%;
+    height: 34%;
+    background: url("../img/flex/ware4.png");
+    background-size: contain;
+
+    position: absolute;
+    left: 25%;
+    top: 44%;
+
+    display: none;
+}
+
+.flex:active .cap {
+    display: block;
+    animation: cap-animation 0.5s infinite;
+}
+
+
+@keyframes cap-animation {
+    0%, 100% {
+        top: 40%;
+        transform: rotate(-30deg);
+        transform-origin: right bottom;
+    }
+    50% {
+        top: 44%;
+        transform: rotate(0);
+        transform-origin: right bottom;
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        top: 40%;
+        transform: rotate(-3deg);
+        transform-origin: center;
+    }
+    50% {
+        top: 44%;
+        transform: rotate(0);
+    }
+}
+
+.flex:active {
+    animation: shake 0.1s infinite;
+}
+
